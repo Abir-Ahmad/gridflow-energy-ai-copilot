@@ -1,0 +1,373 @@
+{
+  "executed_at": "2026-11-12T00:03:14.396899+00:00",
+  "mode": "components_no_llm",
+  "model": null,
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "corpus_sha256": "29263faa6e6ad1c9f2096b76f962ea783555ae847b82205905888b28f85be1f8",
+  "source_sha256": "fa7895b6e9ab5eb1b450949d969cb18ffeb6005359fc71c79c87e1c47e59cac6",
+  "results": [
+    {
+      "id": "highest-month",
+      "status": "pass",
+      "actual": "2024-01",
+      "duration_seconds": 0.0271
+    },
+    {
+      "id": "january-mean",
+      "status": "pass",
+      "actual": 31808.836021505376,
+      "duration_seconds": 0.0106
+    },
+    {
+      "id": "highest-demand",
+      "status": "pass",
+      "actual": 45202,
+      "duration_seconds": 0.0212
+    },
+    {
+      "id": "year-count",
+      "status": "pass",
+      "actual": 17568,
+      "duration_seconds": 0.0158
+    },
+    {
+      "id": "august-mean",
+      "status": "pass",
+      "actual": 21699.211693548386,
+      "duration_seconds": 0.0109
+    },
+    {
+      "id": "june-peak",
+      "status": "pass",
+      "actual": 29605,
+      "duration_seconds": 0.0117
+    },
+    {
+      "id": "wind",
+      "status": "pass",
+      "actual": [
+        "neso-wind:0:1dd8182d6743",
+        "neso-solar:0:2ee5da6f4948",
+        "gridflow-fields:0:769907db5d0b"
+      ],
+      "duration_seconds": 0.0076
+    },
+    {
+      "id": "solar",
+      "status": "pass",
+      "actual": [
+        "neso-solar:0:2ee5da6f4948",
+        "neso-wind:0:1dd8182d6743",
+        "gridflow-fields:0:769907db5d0b"
+      ],
+      "duration_seconds": 0.0072
+    },
+    {
+      "id": "nd",
+      "status": "pass",
+      "actual": [
+        "neso-demand:0:b9ec1a5e02d6",
+        "gridflow-fields:0:769907db5d0b"
+      ],
+      "duration_seconds": 0.0061
+    },
+    {
+      "id": "dst",
+      "status": "pass",
+      "actual": [
+        "gridflow-time:0:d136b6350cf8"
+      ],
+      "duration_seconds": 0.0097
+    },
+    {
+      "id": "provenance",
+      "status": "pass",
+      "actual": [
+        "gridflow-validation:0:dcca5d8e0c6b",
+        "gridflow-limits:0:f11908f777d9"
+      ],
+      "duration_seconds": 0.0125
+    },
+    {
+      "id": "limitations",
+      "status": "pass",
+      "actual": [
+        "gridflow-limits:0:f11908f777d9",
+        "gridflow-fields:0:769907db5d0b",
+        "gridflow-validation:0:dcca5d8e0c6b"
+      ],
+      "duration_seconds": 0.0111
+    },
+    {
+      "id": "future",
+      "status": "not_run",
+      "reason": "Requires real LLM routing"
+    },
+    {
+      "id": "year",
+      "status": "not_run",
+      "reason": "Requires real LLM routing"
+    },
+    {
+      "id": "sql-injection",
+      "status": "not_run",
+      "reason": "Requires real LLM routing"
+    },
+    {
+      "id": "unrelated",
+      "status": "not_run",
+      "reason": "Requires real LLM routing"
+    }
+  ],
+  "csv_reconciliations": [
+    {
+      "month": 1,
+      "status": "pass"
+    },
+    {
+      "month": 2,
+      "status": "pass"
+    },
+    {
+      "month": 3,
+      "status": "pass"
+    },
+    {
+      "month": 4,
+      "status": "pass"
+    },
+    {
+      "month": 5,
+      "status": "pass"
+    },
+    {
+      "month": 6,
+      "status": "pass"
+    },
+    {
+      "month": 7,
+      "status": "pass"
+    },
+    {
+      "month": 8,
+      "status": "pass"
+    },
+    {
+      "month": 9,
+      "status": "pass"
+    },
+    {
+      "month": 10,
+      "status": "pass"
+    },
+    {
+      "month": 11,
+      "status": "pass"
+    },
+    {
+      "month": 12,
+      "status": "pass"
+    },
+    {
+      "period": 1,
+      "status": "pass"
+    },
+    {
+      "period": 2,
+      "status": "pass"
+    },
+    {
+      "period": 3,
+      "status": "pass"
+    },
+    {
+      "period": 4,
+      "status": "pass"
+    },
+    {
+      "period": 5,
+      "status": "pass"
+    },
+    {
+      "period": 6,
+      "status": "pass"
+    },
+    {
+      "period": 7,
+      "status": "pass"
+    },
+    {
+      "period": 8,
+      "status": "pass"
+    },
+    {
+      "period": 9,
+      "status": "pass"
+    },
+    {
+      "period": 10,
+      "status": "pass"
+    },
+    {
+      "period": 11,
+      "status": "pass"
+    },
+    {
+      "period": 12,
+      "status": "pass"
+    },
+    {
+      "period": 13,
+      "status": "pass"
+    },
+    {
+      "period": 14,
+      "status": "pass"
+    },
+    {
+      "period": 15,
+      "status": "pass"
+    },
+    {
+      "period": 16,
+      "status": "pass"
+    },
+    {
+      "period": 17,
+      "status": "pass"
+    },
+    {
+      "period": 18,
+      "status": "pass"
+    },
+    {
+      "period": 19,
+      "status": "pass"
+    },
+    {
+      "period": 20,
+      "status": "pass"
+    },
+    {
+      "period": 21,
+      "status": "pass"
+    },
+    {
+      "period": 22,
+      "status": "pass"
+    },
+    {
+      "period": 23,
+      "status": "pass"
+    },
+    {
+      "period": 24,
+      "status": "pass"
+    },
+    {
+      "period": 25,
+      "status": "pass"
+    },
+    {
+      "period": 26,
+      "status": "pass"
+    },
+    {
+      "period": 27,
+      "status": "pass"
+    },
+    {
+      "period": 28,
+      "status": "pass"
+    },
+    {
+      "period": 29,
+      "status": "pass"
+    },
+    {
+      "period": 30,
+      "status": "pass"
+    },
+    {
+      "period": 31,
+      "status": "pass"
+    },
+    {
+      "period": 32,
+      "status": "pass"
+    },
+    {
+      "period": 33,
+      "status": "pass"
+    },
+    {
+      "period": 34,
+      "status": "pass"
+    },
+    {
+      "period": 35,
+      "status": "pass"
+    },
+    {
+      "period": 36,
+      "status": "pass"
+    },
+    {
+      "period": 37,
+      "status": "pass"
+    },
+    {
+      "period": 38,
+      "status": "pass"
+    },
+    {
+      "period": 39,
+      "status": "pass"
+    },
+    {
+      "period": 40,
+      "status": "pass"
+    },
+    {
+      "period": 41,
+      "status": "pass"
+    },
+    {
+      "period": 42,
+      "status": "pass"
+    },
+    {
+      "period": 43,
+      "status": "pass"
+    },
+    {
+      "period": 44,
+      "status": "pass"
+    },
+    {
+      "period": 45,
+      "status": "pass"
+    },
+    {
+      "period": 46,
+      "status": "pass"
+    },
+    {
+      "period": 47,
+      "status": "pass"
+    },
+    {
+      "period": 48,
+      "status": "pass"
+    },
+    {
+      "period": 49,
+      "status": "pass"
+    },
+    {
+      "period": 50,
+      "status": "pass"
+    }
+  ],
+  "limitations": "Small authored regression set, not a held-out benchmark. Component mode executes expected tools directly and does not test routing, refusal or model grounding selection. Retrieval metric is expected-document hit@3, not answer accuracy."
+}

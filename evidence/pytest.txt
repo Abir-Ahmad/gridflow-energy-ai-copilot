@@ -1,0 +1,17 @@
+..........................................                               [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.14-final-0 _______________
+
+Name                              Stmts   Miss  Cover   Missing
+---------------------------------------------------------------
+src/energy_copilot/__init__.py        0      0   100%
+src/energy_copilot/api.py            50      0   100%
+src/energy_copilot/config.py         11      0   100%
+src/energy_copilot/database.py       40      1    98%   31
+src/energy_copilot/llm.py            61      6    90%   30-31, 80-81, 84, 88
+src/energy_copilot/retrieval.py      41      0   100%
+src/energy_copilot/schemas.py        39      1    97%   15
+src/energy_copilot/service.py        70      8    89%   29, 59-63, 75, 78
+---------------------------------------------------------------
+TOTAL                               312     16    95%
+42 passed in 2.85s

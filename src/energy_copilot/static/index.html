@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Energy AI Copilot</title><style>body{max-width:900px;margin:40px auto;padding:20px;background:#101827;color:#e2edf5;font:17px system-ui}textarea,select,button{font:inherit;padding:12px;border-radius:6px;margin:6px 0}textarea{width:95%}button{background:#5de3c3;color:#082820;cursor:pointer}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#1e2c40;padding:20px}a{color:#5de3c3}</style>
+<h1>Energy AI Copilot</h1><p>Great Britain • NESO 2024 • evidence before interpretation</p>
+<label for="q">Your question</label><textarea id="q" rows="3">Which month had the highest average electricity demand?</textarea>
+<button id="ask">Ask using LLM</button><button id="monthly">Run monthly SQL directly (free)</button><button id="search">Search documentation (free)</button>
+<p>LLM routing requires your locally configured API key. Direct tools use real data without an LLM. Documentation answers are retrieved excerpts. <a href="/docs">API schemas</a></p>
+<p id="status" role="status"></p><pre id="answer">Results and source evidence appear here.</pre><details><summary>Full evidence JSON</summary><pre id="evidence"></pre></details>
+<script>
+async function run(url,body){document.querySelectorAll('button').forEach(b=>b.disabled=true);document.getElementById('status').textContent='Working… First document search may download the embedding model.';try{const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();document.getElementById('answer').textContent=r.ok?j.answer:JSON.stringify(j);document.getElementById('evidence').textContent=JSON.stringify(j,null,2);document.getElementById('status').textContent=r.ok?'Completed: '+j.mode:'Request failed ('+r.status+')';}catch(e){document.getElementById('status').textContent='Unable to reach server';}finally{document.querySelectorAll('button').forEach(b=>b.disabled=false);}}
+document.getElementById('ask').onclick=()=>run('/ask',{question:document.getElementById('q').value});
+document.getElementById('monthly').onclick=()=>run('/tools/analyse',{metric:'national_demand_mw',analysis:'monthly',month:null});
+document.getElementById('search').onclick=()=>run('/tools/search',{query:document.getElementById('q').value});
+</script></html>

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "neso-demand",
+    "title": "NESO: ND and TSD definitions",
+    "url": "https://www.neso.energy/data-portal/historic-demand-data/historic_demand_data_2024",
+    "text": "National demand (ND) measures the GB generation requirement from operational transmission metering. It excludes station load, storage pumping and interconnector exports. Transmission system demand (TSD) adds these requirements. Both are power in MW, not energy in MWh.",
+    "reviewed_on": "2026-11-11",
+    "content_type": "reviewed paraphrase"
+  },
+  {
+    "id": "neso-wind",
+    "title": "NESO: embedded wind estimates",
+    "url": "https://www.neso.energy/data-portal/historic-demand-data/historic_demand_data_2024",
+    "text": "EMBEDDED_WIND_GENERATION estimates output from distribution-connected wind farms without transmission metering. These generators reduce measured demand; their actual output is unknown to NESO. EMBEDDED_WIND_CAPACITY represents estimated installed capacity, not generated output. These columns are not total GB wind generation.",
+    "reviewed_on": "2026-11-11",
+    "content_type": "reviewed paraphrase"
+  },
+  {
+    "id": "neso-solar",
+    "title": "NESO: embedded solar estimates",
+    "url": "https://www.neso.energy/data-portal/historic-demand-data/historic_demand_data_2024",
+    "text": "EMBEDDED_SOLAR_GENERATION estimates distribution-connected photovoltaic output using a model because actual output is not metered by NESO. Solar output suppresses measured demand. EMBEDDED_SOLAR_CAPACITY estimates installed capacity. Generation and capacity are distinct MW quantities, not total renewable energy.",
+    "reviewed_on": "2026-11-11",
+    "content_type": "reviewed paraphrase"
+  },
+  {
+    "id": "neso-flows",
+    "title": "NESO: flows and reserve",
+    "url": "https://www.neso.energy/data-portal/historic-demand-data/historic_demand_data_2024",
+    "text": "Interconnector flow is positive for GB imports and negative for exports. Negative Scottish transfer means flow towards Scotland. NON_BM_STOR covers reserve generation or demand reduction outside the ND generator definition. Pump-storage pumping is pumping demand; source signs are preserved.",
+    "reviewed_on": "2026-11-11",
+    "content_type": "reviewed paraphrase"
+  },
+  {
+    "id": "gridflow-time",
+    "title": "GridFlow: settlement periods and daylight saving",
+    "url": "https://github.com/Abir-Ahmad/gridflow-energy-pipeline/blob/fa347cdbae1af2d22a5f300f69e22a2844b7c304/docs/data_dictionary.md",
+    "text": "The key is settlement_date plus settlement_period. Periods follow the GB settlement calendar: 46 on 31 March 2024, 50 on 27 October 2024, otherwise 48. Period indices must not be interpreted as universal fixed UTC or local clock labels. No timestamps are invented. Periods 49 and 50 have much smaller sample sizes.",
+    "reviewed_on": "2026-11-11",
+    "content_type": "reviewed paraphrase"
+  },
+  {
+    "id": "gridflow-validation",
+    "title": "GridFlow: validation and provenance",
+    "url": "https://github.com/Abir-Ahmad/gridflow-energy-pipeline/blob/fa347cdbae1af2d22a5f300f69e22a2844b7c304/docs/architecture.md",
+    "text": "GridFlow validates 22 ordered CSV columns, signed integer measures and date-sensitive settlement-period bounds. Duplicate keys within an input are quarantined. Incremental transactional upserts insert new keys, update changed values and skip unchanged rows. Raw CSV snapshots, SHA-256 checksums and source row numbers preserve provenance. The copilot reads the existing energy_records SQLite table.",
+    "reviewed_on": "2026-11-11",
+    "content_type": "reviewed paraphrase"
+  },
+  {
+    "id": "gridflow-limits",
+    "title": "GridFlow: limitations and coverage",
+    "url": "https://github.com/Abir-Ahmad/gridflow-energy-pipeline/blob/fa347cdbae1af2d22a5f300f69e22a2844b7c304/README.md",
+    "text": "This is a historical 2024 dataset, not a live feed or forecast. Partial batches are allowed, so row count and date coverage must be checked before describing a full year. Missing observations are never filled. Last successfully loaded changed values win; older input can overwrite newer values. PostgreSQL integration was not verified. Associations do not establish causation.",
+    "reviewed_on": "2026-11-11",
+    "content_type": "reviewed paraphrase"
+  },
+  {
+    "id": "gridflow-fields",
+    "title": "GridFlow: source to SQL names",
+    "url": "https://github.com/Abir-Ahmad/gridflow-energy-pipeline/blob/fa347cdbae1af2d22a5f300f69e22a2844b7c304/docs/data_dictionary.md",
+    "text": "ND maps to national_demand_mw and TSD maps to transmission_demand_mw. Embedded wind and solar generation retain lowercase source names. All source measures are integers in MW. The energy_records table retains record_hash, source_sha256, source_line and raw_record metadata. The primary key combines date and settlement period.",
+    "reviewed_on": "2026-11-11",
+    "content_type": "reviewed paraphrase"
+  }
+]

@@ -1,0 +1,33 @@
+name: tests-and-container
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install --no-deps -e .
+      - run: python -m ruff check src tests scripts
+      - run: python -m pytest -q -m "not integration"
+      - name: Real local embedding test (public model download, no paid API)
+        run: python -m pytest -q -m integration
+      - name: Prepare real four-row GridFlow fixture
+        run: |
+          python -m pip install 'gridflow-energy-pipeline @ git+https://github.com/Abir-Ahmad/gridflow-energy-pipeline.git@fa347cdbae1af2d22a5f300f69e22a2844b7c304'
+          mkdir -p data
+          python -m gridflow tests_fixture.csv --database-url sqlite:///data/energy.db
+      - name: Build container
+        run: docker build -t energy-ai-copilot .
+      - name: Smoke test container using fixture only
+        run: |
+          docker run -d --name copilot -p 127.0.0.1:8000:8000 --mount type=bind,source="$PWD/data",target=/data,readonly energy-ai-copilot
+          python scripts/container_smoke.py
+      - name: Container logs
+        if: always()
+        run: docker logs copilot || true
