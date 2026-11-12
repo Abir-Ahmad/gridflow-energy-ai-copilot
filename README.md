@@ -22,7 +22,8 @@ without changing that repository. The original validator and loader are installe
 - Original GridFlow's **21 tests** were separately rerun and passed.
 - **Live OpenAI calls: not run**; no API credential was available. Mocked SDK/API tests do
   not prove model routing, refusal, relevance selection or real service compatibility.
-- CI and Docker status: see [verification](docs/verification.md). A Dockerfile alone is not a tested deployment.
+- **GitHub Actions passed**, including all 44 tests, Docker build, fixture HTTP/SQL smoke and
+  real retrieval inside the non-root container. See [verification](docs/verification.md) for the run and commit.
 - No hosted service, production users, forecast performance or general accuracy claim.
 
 [Machine-readable evaluation](evidence/evaluation.json) · [test output](evidence/pytest.txt)

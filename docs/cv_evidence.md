@@ -7,7 +7,7 @@
 - Implemented local 384-dimensional BGE embeddings and cosine retrieval with source-linked
   excerpts; verified 6/6 documentation retrieval cases and 62 independent data reconciliations.
 - Added 44 passing automated tests covering SQL safety, API failures, retrieval and mocked LLM
-  integration, with Docker packaging and a no-paid-API GitHub Actions workflow.
+  integration, with a verified Docker build, container smoke tests and passing no-paid-API GitHub Actions.
 
 Use “implemented” for the OpenAI integration, not “validated end-to-end with a live model”.
 Check `docs/verification.md` for actual remote CI and Docker status before describing them as verified.

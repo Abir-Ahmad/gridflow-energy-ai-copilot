@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/Abir-Ahmad/gridflow-energy-ai-copilot",
+  "implementation_commit": "e0438458d6eede209a74e95e3820150c5a4ff597",
+  "workflow_run": 43125500983,
+  "job_id": 130876433127,
+  "unit_tests": 43,
+  "real_embedding_tests": 1,
+  "docker_build": "passed",
+  "docker_http_sql_fixture_smoke": "passed",
+  "docker_real_retrieval": "passed",
+  "live_llm_calls": 0,
+  "scope": "CI uses four-row real fixture for SQL; full-year results are separately captured in evaluation.json"
+}
