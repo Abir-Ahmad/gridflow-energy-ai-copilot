@@ -28,6 +28,8 @@ jobs:
         run: |
           docker run -d --name copilot -p 127.0.0.1:8000:8000 --mount type=bind,source="$PWD/data",target=/data,readonly energy-ai-copilot
           python scripts/container_smoke.py
+      - name: Verify embeddings inside non-root container
+        run: docker exec copilot python -c "from energy_copilot.retrieval import Retriever; r=Retriever(); assert any(s.id.startswith('neso-wind:') for s in r.search('What does embedded wind generation mean?')); print('Container retrieval passed')"
       - name: Container logs
         if: always()
         run: docker logs copilot || true

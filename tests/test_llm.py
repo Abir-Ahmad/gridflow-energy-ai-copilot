@@ -71,3 +71,48 @@ def test_grounding_selection_is_evidence_bound():
     with pytest.raises(InvalidModelOutput):
         r.select_sources("wind meaning", sources)
     assert r.select_sources("wind meaning", []) == []
+
+
+def test_real_sdk_serialisation_with_mock_http_transport():
+    """Exercises installed SDK parsing, not the OpenAI network or a real model."""
+    import httpx
+    from openai import OpenAI
+
+    requests = []
+
+    def handle(request):
+        requests.append(json.loads(request.content))
+        return httpx.Response(
+            200,
+            json={
+                "id": "resp_test",
+                "object": "response",
+                "created_at": 0,
+                "status": "completed",
+                "model": "test-model",
+                "output": [
+                    {
+                        "type": "function_call",
+                        "id": "fc_test",
+                        "call_id": "call_test",
+                        "name": "analyse_demand",
+                        "arguments": json.dumps(
+                            {"metric": "national_demand_mw", "analysis": "peak", "month": None}
+                        ),
+                        "status": "completed",
+                    }
+                ],
+            },
+        )
+
+    client = OpenAI(
+        api_key="test-placeholder",
+        max_retries=0,
+        http_client=httpx.Client(transport=httpx.MockTransport(handle)),
+    )
+    try:
+        result = OpenAIRouter(None, "test-model", client).route("Highest demand?")
+        assert result[0][0] == "analyse_demand"
+        assert requests[0]["tools"][0]["parameters"]["required"] == ["metric", "analysis", "month"]
+    finally:
+        client.close()

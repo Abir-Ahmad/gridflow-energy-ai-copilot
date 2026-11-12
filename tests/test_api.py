@@ -88,3 +88,18 @@ def test_decline_vetoes_analysis(db):
     router.route.return_value = [("analyse_demand", ARGS), ("decline", {"reason": "outside_scope"})]
     body = client(db, router).post("/ask", json={"question": "2025 peak?"}).json()
     assert len(body["evidence"]) == 1 and body["evidence"][0]["kind"] == "refusal"
+
+
+def test_mocked_grounding_selection_removes_unselected_sources(db):
+    router = Mock(model="mock-model")
+    router.route.return_value = [("search_documents", {"query": "wind meaning"})]
+    router.select_sources.return_value = ["wind"]
+    retriever = Mock()
+    retriever.search.return_value = [
+        Source(id="wind", title="Wind", url="https://example.org/wind", text="Wind estimate.", score=0.8),
+        Source(id="solar", title="Solar", url="https://example.org/solar", text="Solar estimate.", score=0.7),
+    ]
+    body = client(db, router, retriever).post("/ask", json={"question": "wind meaning"}).json()
+    assert [s["id"] for s in body["sources"]] == ["wind"]
+    assert "Wind estimate." in body["answer"] and "Solar estimate." not in body["answer"]
+    router.select_sources.assert_called_once()

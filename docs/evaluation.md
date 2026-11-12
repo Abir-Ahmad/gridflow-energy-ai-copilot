@@ -9,7 +9,7 @@ execution time, corpus/data checksums and mode.
 | Numeric component cases | 6/6 | Selected SQL tools match fixed expected values |
 | Documentation expected-source hit@3 | 6/6 | A relevant source appeared among the first three retrieved chunks |
 | Independent CSV reconciliation | 62/62 | All monthly ND means/counts/peaks and all period ND means/counts match Python CSV calculations |
-| Local tests | 42 passed | Validation, safety, SQL, retrieval mechanics, API behaviour and mocked model integration |
+| Local tests | 44 passed | Validation, safety, SQL, retrieval mechanics, API behaviour and mocked model integration |
 | Live LLM evaluations | 0 executed | Nothing yet about actual model routing or source selection |
 | Refusal evaluation cases | 4 not run | Require a live LLM; mocked refusal plumbing is separately tested |
 

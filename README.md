@@ -16,7 +16,7 @@ without changing that repository. The original validator and loader are installe
 ## Verification status
 
 - Real official CSV: **17,568 rows**, matching GridFlow's SHA-256; fresh ingestion completed.
-- **42 local tests passed**, including one real BGE embedding integration test.
+- **44 local tests passed**, including one real BGE embedding integration test.
 - **6/6 numerical component cases** and **6/6 expected-document hit@3 cases** passed.
 - **62 independent CSV reconciliations** passed: 12 monthly groups and 50 period groups.
 - Original GridFlow's **21 tests** were separately rerun and passed.

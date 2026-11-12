@@ -1,0 +1,22 @@
+{
+  "transport": "real local uvicorn HTTP",
+  "llm_calls": 0,
+  "checks": [
+    {
+      "endpoint": "tools/analyse",
+      "mode": "direct_tool",
+      "evidence_count": 1,
+      "sources": []
+    },
+    {
+      "endpoint": "tools/search",
+      "mode": "direct_tool",
+      "evidence_count": 1,
+      "sources": [
+        "neso-wind:0:1dd8182d6743",
+        "neso-solar:0:2ee5da6f4948",
+        "gridflow-fields:0:769907db5d0b"
+      ]
+    }
+  ]
+}

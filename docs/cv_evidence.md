@@ -6,7 +6,7 @@
   read-only SQLite analyses and traceable answers over 17,568 NESO demand observations.
 - Implemented local 384-dimensional BGE embeddings and cosine retrieval with source-linked
   excerpts; verified 6/6 documentation retrieval cases and 62 independent data reconciliations.
-- Added 42 passing automated tests covering SQL safety, API failures, retrieval and mocked LLM
+- Added 44 passing automated tests covering SQL safety, API failures, retrieval and mocked LLM
   integration, with Docker packaging and a no-paid-API GitHub Actions workflow.
 
 Use “implemented” for the OpenAI integration, not “validated end-to-end with a live model”.
@@ -23,7 +23,7 @@ NumPy; pytest/pytest-cov; Ruff; HTML/JavaScript; Dockerfile; GitHub Actions YAML
 ## Verified measurements and skills
 
 Full-year data was ingested with unchanged GridFlow and its known SHA-256 verified.
-42 copilot tests passed locally, including real local embedding inference. Original GridFlow's
+44 copilot tests passed locally, including real local embedding inference. Original GridFlow's
 21 tests also passed. Numeric component checks: 6/6. Expected-document hit@3: 6/6.
 CSV reconciliations: 62/62. These show data correctness and retrieval on a small regression set,
 not general model accuracy. See raw reports and methodology for the exact boundaries.
